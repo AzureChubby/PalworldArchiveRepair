@@ -19,7 +19,7 @@ CORRUPTED_SAVE_GAME_TYPE = "None.PalWorldPlayerSaveGame"
 
 
 def main():
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     current_time = datetime.now()
     formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
     logging.info("------------------------------")
