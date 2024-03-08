@@ -24,10 +24,19 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Get last commit time
+        run: |
+          LAST_COMMIT_TIME=$(git log -1 --format=%cd --date=format:'%Y%m%d%H%M%S' main)
+          echo "LAST_COMMIT_TIME=${LAST_COMMIT_TIME}" >> $GITHUB_ENV
       - name: Build and push
+        env:
+          DOCKER_LATEST: ${{ secrets.DOCKERHUB_USERNAME }}/palworld-archive-repair:latest
+          DOCKER_STABLE: ${{ secrets.DOCKERHUB_USERNAME }}/palworld-archive-repair:${{ env.LAST_COMMIT_TIME }}
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/palworld-archive-repair:latest
+          tags: |
+            $DOCKER_LATEST
+            $DOCKER_STABLE
