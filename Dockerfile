@@ -9,11 +9,10 @@ COPY start_up.sh .
 COPY ArchiveRepair /PalRepair/ArchiveRepair
 
 FROM builder AS runner
-WORKDIR /PalRepair
-VOLUME /data
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x ./start_up.sh
+
 ENTRYPOINT [ "./start_up.sh" ]
