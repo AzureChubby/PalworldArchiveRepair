@@ -3,10 +3,15 @@
 ![Docker Image Version](https://img.shields.io/docker/v/qian/palworld-archive-repair)
 [![Image Size](https://img.shields.io/docker/image-size/qian/palworld-archive-repair/latest)](https://hub.docker.com/r/qian/palworld-archive-repair/tags)
 
+## Instructions
 
-## 帕鲁存档修复工具
+> [!IMPORTANT]
+> Not thoroughly tested; please make sure to backup before use.
 
-- ✅ 登录服务器重新创建账号问题
+
+## TODO
+
+- ✅ 登录服务器需要重新创建账号问题
 - ⌛️ 登录之后光身子无法使用快捷键
 
 
@@ -32,3 +37,7 @@ services:
       - CRON_REPAIR=0 */6 * * *
     restart: unless-stopped
 ```
+
+## Credits
+
+- [palworld-save-tools](https://github.com/cheahjs/palworld-save-tools)
